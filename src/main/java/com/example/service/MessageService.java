@@ -19,7 +19,7 @@ public class MessageService {
     public Optional<Message> createMessage(Message message) {
         Message newMessage = null;
         String messageText = message.getMessageText();
-        if (!(messageText.isBlank() && (messageText.length() < 255))) {
+        if (!(messageText.isBlank()) && (messageText.length() < 255)) {
             try {
                 newMessage = messageRepository.save(message);
             }
