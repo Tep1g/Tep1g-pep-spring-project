@@ -103,11 +103,11 @@ public class SocialMediaController {
     @PatchMapping("messages/{message_id}")
     public ResponseEntity<Integer> updateMessageById(@PathVariable int message_id, @RequestBody Message message) {
         int rowsUpdated = messageService.updateMessageById(message.getMessageText(), message_id);
-        if (rowsUpdated == 1) {
-            return ResponseEntity.status(HttpStatus.OK).body(rowsUpdated);
+        if (rowsUpdated == 0) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            return ResponseEntity.status(HttpStatus.OK).body(rowsUpdated);
         }
     }
 
