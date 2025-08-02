@@ -41,8 +41,11 @@ public class MessageService {
         return messageRepository.deleteMessageById(id);
     }
 
-    public int updateMessageById(Message message) {
-        return messageRepository.updateMessageById(message.getMessageText(), message.getMessageId());
+    public int updateMessageById(String newMessageText, int messageId) {
+        if (newMessageText.length() <= 255) {
+            return messageRepository.updateMessageById(newMessageText, messageId);
+        }
+        return 0;
     }
 
     public List<Message> getAllMessagesByAccountId(int accountId) {
