@@ -78,9 +78,14 @@ public class SocialMediaController {
     }
 
     @GetMapping("messages/{message_id}")
-    public ResponseEntity<Message> getMessageById(@PathVariable int messageId) {
-        Optional<Message> message = messageService.getMessageById(messageId);
-        return ResponseEntity.status(HttpStatus.OK).body(message.get());
+    public ResponseEntity<Message> getMessageById(@PathVariable int message_id) {
+        Optional<Message> message = messageService.getMessageById(message_id);
+        if (!message.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.OK).body(message.get());
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }
     }
 
     @DeleteMapping("messages/{message_id}")
