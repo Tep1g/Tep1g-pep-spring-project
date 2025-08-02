@@ -2,8 +2,8 @@ package com.example.service;
 
 import java.util.Optional;
 
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.example.entity.Account;
@@ -24,7 +24,7 @@ public class AccountService {
                 newAccount = accountRepository.save(account);
             }
             // Handle non-unique username
-            catch (ConstraintViolationException exception) {
+            catch (DataIntegrityViolationException exception) {
                 throw new DuplicateUsernameException("Username is already taken");
             }
         }
