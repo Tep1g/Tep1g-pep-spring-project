@@ -32,6 +32,6 @@ public class AccountService {
     }
 
     public Optional<Account> login(Account account) {
-        return Optional.ofNullable(accountRepository.getAccountByUserAndPass(account.getUsername(), account.getPassword()));
+        return Optional.ofNullable(accountRepository.getAccountByUsernameAndPassword(account.getUsername(), account.getPassword()));
     }
 }

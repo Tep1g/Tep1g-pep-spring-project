@@ -43,12 +43,12 @@ public class MessageService {
 
     public int updateMessageById(String newMessageText, int messageId) {
         if (newMessageText.length() <= 255) {
-            return messageRepository.updateMessageById(newMessageText, messageId);
+            return messageRepository.updateMessageByMessageId(newMessageText, messageId);
         }
         return 0;
     }
 
     public List<Message> getAllMessagesByAccountId(int accountId) {
-        return messageRepository.getMessagesByAccountId(accountId);
+        return messageRepository.getMessagesByPostedBy(accountId);
     }
 }
