@@ -33,7 +33,7 @@ public class SocialMediaController {
     @Autowired
     private MessageService messageService;
 
-    @PostMapping("account")
+    @PostMapping("register")
     public ResponseEntity<Account> register(@RequestBody Account account) {
         try {
             Optional<Account> newAccount = accountService.register(account);
