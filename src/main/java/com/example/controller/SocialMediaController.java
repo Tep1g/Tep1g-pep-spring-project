@@ -2,6 +2,7 @@ package com.example.controller;
 
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -89,8 +90,8 @@ public class SocialMediaController {
     }
 
     @DeleteMapping("messages/{message_id}")
-    public ResponseEntity<Integer> deleteMessageById(@PathVariable int messageId) {
-        int rowsAffected = messageService.deleteMessageById(messageId);
+    public ResponseEntity<Integer> deleteMessageById(@PathVariable int message_id) {
+        int rowsAffected = messageService.deleteMessageById(message_id);
         if (rowsAffected == 0) {
             return ResponseEntity.status(HttpStatus.OK).build();
         }
@@ -100,8 +101,8 @@ public class SocialMediaController {
     }
 
     @PatchMapping("messages/{message_id}")
-    public ResponseEntity<Integer> updateMessageById(@PathVariable int messageId, @RequestBody Message message) {
-        int rowsUpdated = messageService.updateMessageById(message.getMessageText(), messageId);
+    public ResponseEntity<Integer> updateMessageById(@PathVariable int message_id, @RequestBody Message message) {
+        int rowsUpdated = messageService.updateMessageById(message.getMessageText(), message_id);
         if (rowsUpdated == 1) {
             return ResponseEntity.status(HttpStatus.OK).body(rowsUpdated);
         }
@@ -111,8 +112,8 @@ public class SocialMediaController {
     }
 
     @GetMapping("accounts/{account_id}/messages")
-    public ResponseEntity<List<Message>> getAllMessagesByAccountId(@PathVariable int accountId) {
-        List<Message> messages = messageService.getAllMessagesByAccountId(accountId);
+    public ResponseEntity<List<Message>> getAllMessagesByAccountId(@PathVariable int account_id) {
+        List<Message> messages = messageService.getAllMessagesByAccountId(account_id);
         return ResponseEntity.status(HttpStatus.OK).body(messages);
     }
 }
