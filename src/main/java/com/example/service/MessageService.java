@@ -42,7 +42,7 @@ public class MessageService {
     }
 
     public int updateMessageById(String newMessageText, int messageId) {
-        if (newMessageText.length() <= 255) {
+        if ((!newMessageText.isEmpty()) && (newMessageText.length() <= 255)) {
             return messageRepository.updateMessageByMessageId(newMessageText, messageId);
         }
         return 0;
