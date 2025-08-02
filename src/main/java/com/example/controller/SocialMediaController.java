@@ -42,7 +42,7 @@ public class SocialMediaController {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
             }
             else {
-                return ResponseEntity.status(HttpStatus.ACCEPTED).body(newAccount.get());
+                return ResponseEntity.status(HttpStatus.OK).body(newAccount.get());
             }
         }
         catch (DuplicateUsernameException exception) {
