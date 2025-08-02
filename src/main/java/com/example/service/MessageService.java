@@ -38,7 +38,7 @@ public class MessageService {
     }
 
     public int deleteMessageById(int id) {
-        return messageRepository.deleteMessageById(id);
+        return messageRepository.deleteByMessageId(id);
     }
 
     public int updateMessageById(String newMessageText, int messageId) {

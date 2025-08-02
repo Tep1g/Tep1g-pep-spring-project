@@ -16,9 +16,7 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
     @Query(value = "UPDATE message m SET m.messageText=:newMessageText WHERE m.messageId=:id", nativeQuery = true)
     int updateMessageByMessageId(@Param("newMessageText") String newMessageText, @Param("id") Integer id);
 
-    @Modifying
-    @Query(value = "DELETE FROM message m WHERE m.messageId=:id", nativeQuery = true)
-    int deleteMessageById(@Param("id") Integer id);
+    int deleteByMessageId(@Param("id") Integer id);
 
     List<Message> getMessagesByPostedBy(Integer postedBy);
 }
