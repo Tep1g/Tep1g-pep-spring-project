@@ -38,14 +38,8 @@ public class MessageService {
         return messageRepository.findById(id);
     }
 
-    public boolean deleteMessageById(int id) {
-        try {
-            messageRepository.deleteById(id);
-            return true;
-        }
-        catch (EmptyResultDataAccessException exception) {
-            return false;
-        }
+    public int deleteMessageById(int id) {
+        return messageRepository.deleteMessageById(id);
     }
 
     public int updateMessageById(Message message) {
